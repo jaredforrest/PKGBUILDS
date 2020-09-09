@@ -5,7 +5,7 @@ pkgname=dwm-jared
 pkgver=6.2.r
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
-url="https://github.com/jaredforrest/dwm.git"
+url="https://github.com/jaredforrest/dwm-jared.git"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=()
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd dwm
+  cd "${pkgname}"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 
 package() {
-  cd dwm  
+  cd "${pkgname}"  
   mkdir -p ${pkgdir}/opt/${pkgname}
   mkdir -p ${pkgdir}/usr/share/xsessions
   cp -rf * ${pkgdir}/opt/${pkgname}
