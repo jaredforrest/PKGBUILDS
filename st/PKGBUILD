@@ -4,7 +4,7 @@ pkgname=st-jared
 pkgver=0.8.2.r
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
-url='https://github.com/jaredforrest/st.git'
+url='https://github.com/jaredforrest/st-jared.git'
 arch=('i686' 'x86_64')
 license=('MIT')
 options=()
@@ -21,17 +21,17 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
