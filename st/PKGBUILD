@@ -1,7 +1,7 @@
 # Maintainer: Jared Forrest <jared_forrest@mailbox.org>
 
 pkgname=st-jared
-pkgver=0.8.2.r
+pkgver=0.8.2.r9.cfd72d3
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/jaredforrest/st-jared.git'
