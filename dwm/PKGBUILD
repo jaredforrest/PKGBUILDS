@@ -30,10 +30,7 @@ build() {
 
 
 package() {
-  cd "${pkgname}"  
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  mkdir -p ${pkgdir}/usr/share/xsessions
-  cp -rf * ${pkgdir}/opt/${pkgname}
+  cd "${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dwm-jared/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/dwm-jared/README.md"
