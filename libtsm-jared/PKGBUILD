@@ -1,5 +1,5 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
-pkgname=libtsm-jared-git
+pkgname=libtsm-jared
 _gitname=libtsm
 pkgver=4.0.1.r6.gdf6b4cb
 pkgrel=1
