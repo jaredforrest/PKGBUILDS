@@ -26,9 +26,9 @@ sha256sums=(SKIP
 	    SKIP
       SKIP
       SKIP)
-_gitname="st"	    
-_sourcedir="$_gitname"
-_makeopts="--directory=$_sourcedir"
+_gitname="$_pkgname"	    
+_sourcedir="$_pkgname"
+_makeopts="--directory=$_pkgname"
 _startdir=$PWD
 
 pkgver() {
@@ -38,7 +38,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch --forward --strip=1 --input="${srcdir}/terminfo.patch"
+    patch --forward --strip=0 --input="${srcdir}/terminfo.patch"
     patch --forward --strip=1 --input="${srcdir}/st-jared.patch"
 }
 
