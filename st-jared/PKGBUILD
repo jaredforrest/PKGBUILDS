@@ -32,7 +32,7 @@ _makeopts="--directory=$_pkgname"
 _startdir=$PWD
 
 pkgver() {
-    cd "${srcdir}/st"
+    cd $_pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
