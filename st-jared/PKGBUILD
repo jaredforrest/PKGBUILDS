@@ -28,7 +28,6 @@ sha256sums=(SKIP
       SKIP)
 _gitname="$_pkgname"	    
 _sourcedir="$_pkgname"
-_makeopts="--directory=$_pkgname"
 _startdir=$PWD
 
 pkgver() {
@@ -44,15 +43,16 @@ prepare() {
 
 build() {
   cd $_pkgname
-  make $_makeopts X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
+  cd $_pkgname
   local installopts='--mode 0644 -D --target-directory'
   local shrdir="$pkgdir/usr/share"
   local licdir="$shrdir/licenses/$pkgname"
   local docdir="$shrdir/doc/$pkgname"
-  make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install $installopts "$licdir" "$_sourcedir/LICENSE"
   install $installopts "$docdir" "$_sourcedir/README"
   install $installopts "$docdir" README.terminfo.rst
