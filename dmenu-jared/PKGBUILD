@@ -1,42 +1,49 @@
 # Maintainer: Jared Forrest <jared_forrest@mailbox.org>
+# Maintainer:  Håvard Pettersson 
+# Contributor: Sergej Pupykin 
+# Contributor: Bartłomiej Piotrowski 
+# Contributor: Thorsten Töpper 
+# Contributor: Thayer Williams 
+# Contributor: Jeff 'codemac' Mickey 
 
-pkgname=dmenu-jared
-pkgver=4.9.r10.7876150
+_pkgname=dmenu
+pkgname=$_pkgname-jared
+pkgver=5.0.0.g1a13d04
 pkgrel=1
-epoch=
-pkgdesc="This is my personal build of dmenu that is patched for fonts, centering, borders, etc."
-arch=(x86_64 i686)
-url="https://github.com/jaredforrest/dmenu-jared.git"
+pkgdesc="A generic menu for X"
+url="http://tools.suckless.org/dmenu/"
+arch=('i686' 'x86_64')
 license=('MIT')
-depends=(noto-fonts-emoji)
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=(dmenu)
-conflicts=(dmenu)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+depends=('sh' 'libxinerama' 'libxft' 'noto-fonts-emoji')
+makedepends=('git')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(git://git.suckless.org/$_pkgname https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/dmenu-jared/dmenu-jared.patch)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-    printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  git describe --tags --long | sed 's/-/./g'
 }
 
-build() {
-	cd "${pkgname}"
-    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+prepare() {
+  cd $_pkgname
+  # to use a custom config.h, place it in the package directory
+  if [[ -f ${SRCDEST}/config.h ]]; then
+      cp "${SRCDEST}/config.h" .
+  fi
+  patch --forward --strip=1 --input="${srcdir}/dmenu-jared.patch"
+}
+
+build(){
+  cd $_pkgname
+  make \
+    X11INC=/usr/include/X11 \
+    X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd "${pkgname}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd $_pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
