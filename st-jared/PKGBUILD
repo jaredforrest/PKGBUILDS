@@ -1,37 +1,62 @@
-# Maintainer: Jared Forrest <jared_forrest@mailbox.org>
+# Maintainer:  Jared Forrest <jared_forrest@mailbox.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Static_Rocket
+# Contributor: Jose Riha <jose1711 gmail com>
+# Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
+# Contributor: Patrick Jackson <PatrickSJackson gmail com>
+# Contributor: Christoph Vigano <mail@cvigano.de>
 
-pkgname=st-jared
-pkgver=0.8.2.r9.cfd72d3
+_pkgname=st
+pkgname=$_pkgname-jared
+pkgver=0.8.3.r19.g9ba7ecf
 pkgrel=1
-pkgdesc='Simple virtual terminal emulator for X'
-url='https://github.com/jaredforrest/st-jared.git'
-arch=('i686' 'x86_64')
+pkgdesc='A simple virtual terminal emulator for X.'
+arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-options=()
-depends=('libxft')
+depends=(libxft)
 makedepends=('ncurses' 'libxext' 'git')
-source=("git+$url")
-sha256sums=('SKIP')
-provides=('st')
-conflicts=('st')
+provides=(st)
+conflicts=(st)
+url=https://st.suckless.org
+source=(git://git.suckless.org/st
+	terminfo.patch
+	README.terminfo.rst
+  https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/st-jared/st-jared.patch)
+sha256sums=(SKIP
+	    SKIP
+      SKIP
+      SKIP)
+_gitname="st"	    
+_sourcedir="$_gitname"
+_makeopts="--directory=$_sourcedir"
+_startdir=$PWD
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "0.8.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/st"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname}"
+    cd "$_pkgname"
+    patch --forward --strip=1 --input="${srcdir}/terminfo.patch"
+    patch --forward --strip=1 --input="${srcdir}/st-jared.patch"
 }
 
 build() {
-  cd "${pkgname}"
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  cd $_pkgname
+  make $_makeopts X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd "${pkgname}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  local installopts='--mode 0644 -D --target-directory'
+  local shrdir="$pkgdir/usr/share"
+  local licdir="$shrdir/licenses/$pkgname"
+  local docdir="$shrdir/doc/$pkgname"
+  make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
+  install $installopts "$licdir" "$_sourcedir/LICENSE"
+  install $installopts "$docdir" "$_sourcedir/README"
+  install $installopts "$docdir" README.terminfo.rst
+  install $installopts "$shrdir/$pkgname" "$_sourcedir/st.info"
 }
+
+
