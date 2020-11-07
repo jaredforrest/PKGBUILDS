@@ -38,8 +38,8 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch --forward --strip=1 --input="${srcdir}/terminfo.patch"
-    patch --forward --strip=1 --input="${srcdir}/st-jared.patch"
+    patch --forward --strip=1 --input="${_srcdir}/terminfo.patch"
+    patch --forward --strip=1 --input="${_srcdir}/st-jared.patch"
 }
 
 build() {
