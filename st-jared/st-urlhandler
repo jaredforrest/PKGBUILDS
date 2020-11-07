@@ -1,0 +1,23 @@
+#!/bin/sh
+
+clip=0
+verb=Follow
+[ "$1" = "-c" ] && clip=1 && verb=Copy && shift
+
+urlregex="http[s]?:\/\/[a-zA-Z0-9_.~\!*'();:@&=+$,/?#%?-]+"
+
+# First remove linebreaks and mutt sidebars:
+urls="$(sed 's/.*│//g' | tr -d '\n' |
+	grep -aEo "$urlregex" | # grep only urls as defined above.
+#	uniq | # Ignore neighboring duplicates.
+	sed 's/^www./https:\/\/www\./g')"
+
+[ -z "$urls" ] && exit
+
+chosen="$(echo "$urls" | dmenu -i -p "$verb which url?" -l 10)"
+
+if [ $clip -eq 0 ]; then
+    setsid xdg-open "$chosen" >/dev/null 2>&1 &
+else
+    printf %s "$chosen" | xclip -selection clipboard
+fi
