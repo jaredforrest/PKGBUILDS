@@ -48,15 +48,9 @@ build() {
 
 package() {
   cd $_pkgname
-  local installopts='--mode 0644 -D --target-directory'
-  local shrdir="$pkgdir/usr/share"
-  local licdir="$shrdir/licenses/$pkgname"
-  local docdir="$shrdir/doc/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  install $installopts "$licdir" "$_sourcedir/LICENSE"
-  install $installopts "$docdir" "$_sourcedir/README"
-  install $installopts "$docdir" README.terminfo.rst
-  install $installopts "$shrdir/$pkgname" "$_sourcedir/st.info"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 README "$pkgdir"/usr/share/licenses/$pkgname/README
+  install -Dm644 README.terminfo.rst "$pkgdir"/usr/share/doc/$pkgname/README.terminfo.rst
+  install -Dm644 st.info "$pkgdir"/usr/share/st.info
 }
-
-
