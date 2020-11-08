@@ -9,10 +9,10 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'ttf-dejavu')
 makedepends=('git')
-install=dwm.install
+#install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
-source=(dwm.desktop
+source=(dwm.desktop::https://aur.archlinux.org/cgit/aur.git/tree/dwm.desktop?h=dwm-git
         "$_pkgname::git+http://git.suckless.org/dwm"
         https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/dwm-jared/dwm-jared.patch)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
