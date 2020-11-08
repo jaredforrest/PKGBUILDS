@@ -1,37 +1,44 @@
-# $Id$
-# Maintainer: Jared Forrest <jared_forrest@mailbox.org>
-
-pkgname=dwm-jared
-pkgver=6.2.r
+_pkgname=dwm
+pkgname=$_pkgname-jared
+pkgver=6.2.r0.gcb3f58a
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
-url="https://github.com/jaredforrest/dwm-jared.git"
+url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
-options=()
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu' 'ttf-dejavu')
+options=(zipman)
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'ttf-dejavu')
 makedepends=('git')
-provides=(dwm)
-conflicts=(dwm)
-source=("git+$url")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+install=dwm.install
+provides=('dwm')
+conflicts=('dwm')
+source=(dwm.desktop
+        "$_pkgname::git+http://git.suckless.org/dwm"
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/dwm-jared/dwm-jared.patch)
+md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP'
+         'SKIP')
 
-pkgver() {
-  cd "${pkgname}"
-  printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver(){
+  cd $_pkgname
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  patch --forward --strip=1 --input="${srcdir}/dwm-jared.patch"
 }
 
 build() {
-  cd "${pkgname}"
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+  cd $_pkgname
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
-
 
 package() {
-  cd "${pkgname}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dwm-jared/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/dwm-jared/README.md"
+  cd $_pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -m644 -D ../dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
+
