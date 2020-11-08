@@ -48,10 +48,9 @@ build() {
 
 package() {
   install -Dm644 README.terminfo.rst "$pkgdir"/usr/share/doc/$pkgname/README.terminfo.rst
-  install -Dm644 st.info "$pkgdir"/usr/share/st.info
-
   cd $_pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 st.info "$pkgdir"/usr/share/st.info
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 README "$pkgdir"/usr/share/licenses/$pkgname/README
 }
