@@ -1127,7 +1127,7 @@ diff --unified --recursive --new-file --text st/st-urlhandler st-jared/st-urlhan
 +
 +[ -z "$urls" ] && exit
 +
-+chosen="$(echo "$urls" | dmenu -i -p "$verb which url?" -l 10)"
++chosen="$(echo "$urls" | dmenu -i -p "$verb which url?" -c -h 24 -l 10)"
 +
 +if [ $clip -eq 0 ]; then
 +    setsid xdg-open "$chosen" >/dev/null 2>&1 &
