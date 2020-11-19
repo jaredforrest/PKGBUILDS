@@ -1,6 +1,6 @@
 diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
---- dwm/config.def.h	2020-11-08 01:00:42.532249880 +0000
-+++ dwm-jared/config.def.h	2020-11-08 01:00:32.299002852 +0000
+--- dwm/config.def.h	2020-11-18 13:25:03.937917687 +0000
++++ dwm-jared/config.def.h	2020-11-19 04:00:03.121542070 +0000
 @@ -1,9 +1,11 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -15,7 +15,7 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
  static const int topbar             = 1;        /* 0 means bottom bar */
  static const char *fonts[]          = { "monospace:size=10" };
  static const char dmenufont[]       = "monospace:size=10";
-@@ -26,15 +28,18 @@
+@@ -26,15 +28,19 @@
  	 *	WM_CLASS(STRING) = instance, class
  	 *	WM_NAME(STRING) = title
  	 */
@@ -27,7 +27,8 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
 +	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 +	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 +	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-+    	{ "Tor Browser",NULL,  NULL,           0,         1,          0,           0,        -1 },
++   	{ "Tor Browser",NULL,  NULL,           0,         1,          0,           0,        -1 },
++   	{ NULL,      "spterm", NULL,       	   0,         1,          1,           0,        -1 },
  };
  
  /* layout(s) */
@@ -38,7 +39,7 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
  
  static const Layout layouts[] = {
  	/* symbol     arrange function */
-@@ -44,7 +49,7 @@
+@@ -44,7 +50,7 @@
  };
  
  /* key definitions */
@@ -47,18 +48,35 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
  #define TAGKEYS(KEY,TAG) \
  	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-@@ -56,7 +61,7 @@
+@@ -56,13 +62,15 @@
  
  /* commands */
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 -static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 +static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-i", "-c", "-h", "24", "-l", "20", NULL };
  static const char *termcmd[]  = { "st", NULL };
++static const char *scratchpadcmd[]  = { "st", "-n", "spterm", NULL };
  
  static Key keys[] = {
+ 	/* modifier                     key        function        argument */
+ 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+ 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
++	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = scratchpadcmd } },
+ 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+ 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+ 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 diff --unified --recursive --text dwm/config.mk dwm-jared/config.mk
---- dwm/config.mk	2020-11-08 01:00:42.532249880 +0000
-+++ dwm-jared/config.mk	2020-11-08 01:01:56.391626165 +0000
+--- dwm/config.mk	2020-11-18 13:25:03.937917687 +0000
++++ dwm-jared/config.mk	2020-11-19 04:01:43.853743919 +0000
+@@ -4,7 +4,7 @@
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
++PREFIX = /usr/
+ MANPREFIX = ${PREFIX}/share/man
+ 
+ X11INC = /usr/X11R6/include
 @@ -22,7 +22,7 @@
  
  # includes and libs
@@ -69,8 +87,8 @@ diff --unified --recursive --text dwm/config.mk dwm-jared/config.mk
  # flags
  CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 diff --unified --recursive --text dwm/drw.c dwm-jared/drw.c
---- dwm/drw.c	2020-11-08 01:00:42.532249880 +0000
-+++ dwm-jared/drw.c	2020-11-08 01:00:32.299002852 +0000
+--- dwm/drw.c	2020-11-18 13:25:03.937917687 +0000
++++ dwm-jared/drw.c	2020-11-18 13:23:06.119104191 +0000
 @@ -95,7 +95,6 @@
  {
  	XFreePixmap(drw->dpy, drw->drawable);
@@ -80,8 +98,8 @@ diff --unified --recursive --text dwm/drw.c dwm-jared/drw.c
  }
  
 diff --unified --recursive --text dwm/dwm.c dwm-jared/dwm.c
---- dwm/dwm.c	2020-11-08 01:00:42.532249880 +0000
-+++ dwm-jared/dwm.c	2020-11-08 01:00:32.302336157 +0000
+--- dwm/dwm.c	2020-11-18 13:25:03.937917687 +0000
++++ dwm-jared/dwm.c	2020-11-18 13:23:06.119104191 +0000
 @@ -40,6 +40,8 @@
  #include <X11/extensions/Xinerama.h>
  #endif /* XINERAMA */
