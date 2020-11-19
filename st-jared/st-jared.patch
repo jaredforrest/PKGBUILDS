@@ -957,7 +957,7 @@ diff --unified --recursive --new-file --text st/st.c st-jared/st.c
 +	/* ignore sigpipe for now, in case child exists early */
 +	oldsigpipe = signal(SIGPIPE, SIG_IGN);
 +	newline = 0;
-+	for (n = 0; n <= HISTSIZE + 2; n++) {
++	for (n = 0; n < HISTSIZE + 1; n++) {
 +		bp = TLINE_HIST(n);
 +		lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
 +		if (lastpos < 0)
