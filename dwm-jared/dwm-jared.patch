@@ -27,13 +27,8 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
 +	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 +	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 +	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-<<<<<<< HEAD
 +	{ "Tor Browser",NULL,  NULL,           0,         1,          0,           0,        -1 },
 +	{ NULL,      "spterm", NULL,       	   0,         1,          1,           0,        -1 },
-=======
-+ { "Tor Browser",NULL,  NULL,           0,         1,          0,           0,        -1 },
-+ { NULL,      "spterm", NULL,       	   0,         1,          1,           0,        -1 },
->>>>>>> a6b0af7b977640df9440959a3ceb9bb19fc67b51
  };
  
  /* layout(s) */
