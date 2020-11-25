@@ -55,7 +55,7 @@ diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
 -static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 +static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-i", "-c", "-h", "24", "-l", "20", NULL };
  static const char *termcmd[]  = { "st", NULL };
-+static const char *scratchpadcmd[]  = { "st", "-n", "spterm", NULL };
++static const char *scratchpadcmd[]  = { "st", "-n", "spterm", "-g", "+100+100", NULL };
  
  static Key keys[] = {
  	/* modifier                     key        function        argument */
