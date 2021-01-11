@@ -14,8 +14,14 @@ provides=('dwm')
 conflicts=('dwm')
 source=(dwm.desktop::https://aur.archlinux.org/cgit/aur.git/plain/dwm.desktop?h=dwm-git
         "$_pkgname::git+http://git.suckless.org/dwm"
-        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/dwm-jared/dwm-jared.patch)
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-uselessgap-20200719-bb2e722.diff
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-swallow-20201211-61bb8b2.diff
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-focusonnetactive-6.2.diff
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-mystuff.diff
 md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP')
 
@@ -26,7 +32,10 @@ pkgver(){
 
 prepare() {
   cd $_pkgname
-  patch --forward --strip=1 --input="${srcdir}/dwm-jared.patch"
+  patch --forward --strip=1 --input="${srcdir}/dwm-uselessgap-20200719-bb2e722.diff"
+  patch --forward --strip=1 --input="${srcdir}/dwm-swallow-20201211-61bb8b2.diff"
+  patch --forward --strip=1 --input="${srcdir}/dwm-focusonnetactive-6.2.diff"
+  patch --forward --strip=1 --input="${srcdir}/dwm-mystuff.diff"
 }
 
 build() {
