@@ -20,12 +20,10 @@ conflicts=(st)
 url=https://st.suckless.org
 source=(git://git.suckless.org/st
 	terminfo.patch::https://aur.archlinux.org/cgit/aur.git/plain/terminfo.patch?h=st-git
-	README.terminfo.rst::https://aur.archlinux.org/cgit/aur.git/plain/README.terminfo.rst?h=st-git
-  	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/master/st-jared/st-jared.patch)
+	README.terminfo.rst::https://aur.archlinux.org/cgit/aur.git/plain/README.terminfo.rst?h=st-git)
 sha256sums=(SKIP
 	    SKIP
-      SKIP
-      SKIP)
+	    SKIP)
 _gitname="$_pkgname"	    
 _sourcedir="$_pkgname"
 _startdir=$PWD
