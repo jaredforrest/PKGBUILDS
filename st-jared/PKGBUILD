@@ -34,7 +34,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd $_pkgname
     patch --forward --strip=0 --input="${srcdir}/terminfo.patch"
     patch --forward --strip=0 --input="${srcdir}/st-scrollback-20201205-4ef0cbd.diff"
     patch --forward --strip=0 --input="${srcdir}/st-externalpipe-0.8.4.diff"
