@@ -21,15 +21,15 @@ url=https://st.suckless.org
 source=(git://git.suckless.org/st
 	terminfo.patch::https://aur.archlinux.org/cgit/aur.git/plain/terminfo.patch?h=st-git
 	README.terminfo.rst::https://aur.archlinux.org/cgit/aur.git/plain/README.terminfo.rst?h=st-git
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-scrollback-20201205-4ef0cbd.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-externalpipe-0.8.4.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-boxdraw_v2-0.8.3.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-font2-20190416-ba72400.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-alpha-0.8.2.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-bold-is-not-bright-20190127-3be4cf1.diff
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-sixel-0.8.4.patch
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-pipe-utils-0.8.4.patch
-    https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch)
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-scrollback-20201205-4ef0cbd.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-externalpipe-0.8.4.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-boxdraw_v2-0.8.3.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-font2-20190416-ba72400.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-alpha-0.8.2.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-bold-is-not-bright-20190127-3be4cf1.diff
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-sixel-0.8.4.patch
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-pipe-utils-0.8.4.patch
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch)
 sha256sums=(SKIP
     SKIP
     SKIP
@@ -52,7 +52,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd $_pkgname
     patch --forward --strip=0 --input="${srcdir}/terminfo.patch"
     patch --forward --strip=1 --input="${srcdir}/st-scrollback-20201205-4ef0cbd.diff"
     patch --forward --strip=1 --input="${srcdir}/st-externalpipe-0.8.4.diff"
