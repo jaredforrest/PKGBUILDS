@@ -17,8 +17,10 @@ source=(dwm.desktop::https://aur.archlinux.org/cgit/aur.git/plain/dwm.desktop?h=
         https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-uselessgap-20200719-bb2e722.diff
         https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-swallow-20201211-61bb8b2.diff
         https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-focusonnetactive-6.2.diff
+        https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-fixborders-6.2.diff
         https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/dwm-jared/dwm-jared/dwm-mystuff.diff)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -35,6 +37,7 @@ prepare() {
   patch --forward --strip=1 --input="${srcdir}/dwm-uselessgap-20200719-bb2e722.diff"
   patch --forward --strip=1 --input="${srcdir}/dwm-swallow-20201211-61bb8b2.diff"
   patch --forward --strip=1 --input="${srcdir}/dwm-focusonnetactive-6.2.diff"
+  patch --forward --strip=1 --input="${srcdir}/dwm-fixborders-6.2.diff"
   patch --forward --strip=1 --input="${srcdir}/dwm-mystuff.diff"
 }
 
