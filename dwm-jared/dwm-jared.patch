@@ -1,12 +1,10 @@
 diff --unified --recursive --text dwm/config.def.h dwm-jared/config.def.h
 --- dwm/config.def.h	2020-11-18 13:25:03.937917687 +0000
 +++ dwm-jared/config.def.h	2020-11-19 04:00:03.121542070 +0000
-@@ -1,9 +1,11 @@
- /* See LICENSE file for copyright and license details. */
- 
+@@ -2,8 +2,10 @@
+  
  /* appearance */
--static const unsigned int borderpx  = 1;        /* border pixel of windows */
-+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 +static const unsigned int gappx     = 12;        /* gaps between windows */
  static const unsigned int snap      = 32;       /* snap pixel */
 -static const int showbar            = 1;        /* 0 means no bar */
