@@ -19,8 +19,7 @@ provides=(st)
 conflicts=(st)
 url=https://st.suckless.org
 source=(git://git.suckless.org/st
-	terminfo.patch::https://aur.archlinux.org/cgit/aur.git/plain/terminfo.patch?h=st-git
-	README.terminfo.rst::https://aur.archlinux.org/cgit/aur.git/plain/README.terminfo.rst?h=st-git
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-scrollback-20201205-4ef0cbd.diffterminfo.patch
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-scrollback-20201205-4ef0cbd.diff
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-externalpipe-0.8.4.diff
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-boxdraw_v2-0.8.3.diff
@@ -32,7 +31,6 @@ source=(git://git.suckless.org/st
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-258color.info)
 sha256sums=(SKIP
-    SKIP
     SKIP
     SKIP
     SKIP
@@ -55,7 +53,7 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    patch --forward --strip=0 --input="${srcdir}/terminfo.patch"
+    patch --forward --strip=1 --input="${srcdir}/terminfo.patch"
     patch --forward --strip=1 --input="${srcdir}/st-scrollback-20201205-4ef0cbd.diff"
     patch --forward --strip=1 --input="${srcdir}/st-externalpipe-0.8.4.diff"
     patch --forward --strip=1 --input="${srcdir}/st-boxdraw_v2-0.8.3.diff"
@@ -74,7 +72,6 @@ build() {
 }
 
 package() {
-  install -Dm644 README.terminfo.rst "$pkgdir"/usr/share/doc/$pkgname/README.terminfo.rst
   cd $_pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 st.info "$pkgdir"/usr/share/st.info
