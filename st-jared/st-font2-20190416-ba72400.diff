@@ -36,7 +36,7 @@ index 5828a3b..d37e59d 100644
 @@ -149,6 +149,8 @@ static void xhints(void);
  static int xloadcolor(int, const char *, Color *);
  static int xloadfont(Font *, FcPattern *);
- static void xloadfonts(char *, double);
+ static void xloadfonts(const char *, double);
 +static int xloadsparefont(FcPattern *, int);
 +static void xloadsparefonts(void);
  static void xunloadfont(Font *);
