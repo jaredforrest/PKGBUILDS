@@ -38,6 +38,7 @@ sha256sums=(SKIP
     SKIP
     SKIP
     SKIP
+    SKIP
     SKIP)
 _gitname="$_pkgname"	    
 _sourcedir="$_pkgname"
