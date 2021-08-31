@@ -29,8 +29,10 @@ source=(git://git.suckless.org/st
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-bold-is-not-bright-20190127-3be4cf1.diff
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-sixel-0.8.4.patch
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-pipe-utils-0.8.4.patch
-	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch)
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch
+	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-258color.info)
 sha256sums=(SKIP
+    SKIP
     SKIP
     SKIP
     SKIP
