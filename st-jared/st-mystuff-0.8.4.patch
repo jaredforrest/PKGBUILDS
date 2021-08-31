@@ -17,6 +17,15 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
  static int borderpx = 2;
  
  /*
+@@ -74,7 +74,7 @@
+ static int bellvolume = 0;
+
+ /* default TERM value */
+-char *termname = "st-256color";
++char *termname = "st-258color";
+
+ /*
+  * spaces per tab 
 @@ -79,8 +74,8 @@
   *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
   * 0: disable (render all U25XX glyphs normally from the font).
