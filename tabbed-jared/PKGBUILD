@@ -15,7 +15,7 @@ source=("$_pkgname::git+http://git.suckless.org/tabbed"
 	      https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/tabbed-jared/tabbed-jared/tabbed-keyrelease-20191216-b5f9ec6.diff
 	      https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/tabbed-jared/tabbed-jared/tabbed-hidetabs-20191216-b5f9ec6.diff
 	      https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/tabbed-jared/tabbed-jared/alpha.diff
-	      https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/tabbed-jared/tabbed-jared/alpha.diff)
+	      https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/tabbed-jared/tabbed-jared/tabbed-fixed.diff)
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP'
