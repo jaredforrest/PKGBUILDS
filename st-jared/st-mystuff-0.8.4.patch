@@ -13,7 +13,7 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 -};
 -
 +static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
-+static char *font2[] = { "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" };
++static char *font2[] = { "AppleColorEmoji:pixelsize=10:antialias=true:autohint=true" };
  static int borderpx = 2;
  
  /*
