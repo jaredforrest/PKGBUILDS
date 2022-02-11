@@ -78,17 +78,17 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 +    "#8e44ad",
 +    "#16a085",
 +    "#ffffff",
- 	[255] = 0,
- 
- 	/* more colors can be added after 255 to use with DefaultXX */
+        [255] = 0,
+
+        /* more colors can be added after 255 to use with DefaultXX */
 -       "#cccccc",
-+	"#fcfcfc",
-	"#555555",
--	"gray90", /* default foreground colour */
--	"black", /* default background colour */
-+	"#fcfcfc" /* default foreground colour */
-+	"#1c1c1c" /* default background colour */
-+       "#1c1c1c" /* my custom colour */
++       "#fcfcfc",
+        "#555555",
+-       "gray90", /* default foreground colour */
+-       "black", /* default background colour */
++       "#fcfcfc", /* default foreground colour */
++       "#1c1c1c", /* default background colour */
++       "#1c1c1c", /* default background colour */
  };
  
  
