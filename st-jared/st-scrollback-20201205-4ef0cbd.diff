@@ -2,7 +2,7 @@ diff --git a/config.def.h b/config.def.h
 index 6f05dce..93cbcc0 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -197,6 +197,8 @@ static Shortcut shortcuts[] = {
+@@ -201,6 +201,8 @@ static Shortcut shortcuts[] = {
  	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
  	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
  	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
@@ -54,7 +54,7 @@ index abbbe4b..e2dd722 100644
  static void tsetattr(const int *, int);
  static void tsetchar(Rune, const Glyph *, int, int);
  static void tsetdirt(int, int);
-@@ -414,10 +421,10 @@ tlinelen(int y)
+@@ -414,10 +423,10 @@ tlinelen(int y)
  {
  	int i = term.col;
  
