@@ -37,7 +37,7 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 
  /*
   * spaces per tab 
-@@ -116,33 +111,33 @@
+@@ -116,33 +111,31 @@
  
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
