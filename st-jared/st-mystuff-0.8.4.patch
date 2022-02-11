@@ -37,7 +37,7 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 
  /*
   * spaces per tab 
-@@ -116,32 +111,28 @@
+@@ -116,33 +111,33 @@
  
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
@@ -81,26 +81,17 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
  	[255] = 0,
  
  	/* more colors can be added after 255 to use with DefaultXX */
--	"#cccccc",
- 	"#555555",
--	"black",
-+    "#1c1c1c"
+-       "#cccccc",
++	"#fcfcfc",
+	"#555555",
+-	"gray90", /* default foreground colour */
+-	"black", /* default background colour */
++	"#fcfcfc" /* default foreground colour */
++	"#1c1c1c" /* default background colour */
++       "#1c1c1c" /* my custom colour */
  };
  
  
-@@ -150,9 +141,9 @@
-  * foreground, background, cursor, reverse cursor
-  */
- unsigned int defaultfg = 7;
--unsigned int defaultbg = 258;
--static unsigned int defaultcs = 256;
--static unsigned int defaultrcs = 257;
-+unsigned int defaultbg = 0;
-+static unsigned int defaultcs = 7;
-+static unsigned int defaultrcs = 256;
- 
- /*
-  * Default shape of cursor
 @@ -205,7 +196,7 @@
  
  /* Internal keyboard shortcuts. */
