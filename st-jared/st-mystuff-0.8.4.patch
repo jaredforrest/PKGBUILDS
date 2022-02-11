@@ -37,11 +37,10 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 
  /*
   * spaces per tab 
-@@ -116,33 +111,31 @@
- 
+@@ -117,32 +117,33 @@
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
--	/* 8 normal colors */
+ 	/* 8 normal colors */
 -	"black",
 -	"red3",
 -	"green3",
@@ -50,8 +49,16 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 -	"magenta3",
 -	"cyan3",
 -	"gray90",
--
--	/* 8 bright colors */
++	"#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
++	"#ed1515",
++	"#11d116",
++	"#f67400",
++	"#1d99f3",
++	"#9b59b6",
++	"#1abc9c",
++	"#fcfcfc",
+ 
+ 	/* 8 bright colors */
 -	"gray50",
 -	"red",
 -	"green",
@@ -61,34 +68,26 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 -	"cyan",
 -	"white",
 -
-+    "#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
-+    "#ed1515",
-+    "#11d116",
-+    "#f67400",
-+    "#1d99f3",
-+    "#9b59b6",
-+    "#1abc9c",
-+    "#fcfcfc",
-+
-+    "#7f8c8d",
-+    "#c0392b",
-+    "#1cdc9a",
-+    "#fdbc4b",
-+    "#3daee9",
-+    "#8e44ad",
-+    "#16a085",
-+    "#ffffff",
-        [255] = 0,
-
-        /* more colors can be added after 255 to use with DefaultXX */
--       "#cccccc",
-+       "#fcfcfc",
-        "#555555",
--       "gray90", /* default foreground colour */
--       "black", /* default background colour */
-+       "#fcfcfc", /* default foreground colour */
-+       "#1c1c1c", /* default background colour */
-+       "#1c1c1c", /* default background colour */
++	"#7f8c8d",
++	"#c0392b",
++	"#1cdc9a",
++	"#fdbc4b",
++	"#3daee9",
++	"#8e44ad",
++	"#16a085",
++	"#ffffff",
++    
+ 	[255] = 0,
+ 
+ 	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
++	"#fcfcfc",
+ 	"#555555",
+-	"gray90", /* default foreground colour */
+-	"black", /* default background colour */
++	"#fcfcfc", /* default foreground colour */
++	"#1c1c1c", /* default background colour */
++	"#1c1c1c",
  };
  
  
