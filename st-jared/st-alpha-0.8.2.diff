@@ -46,10 +46,10 @@ diff --git a/st.h b/st.h
 index 38c61c4..b7634ab 100644
 --- a/st.h
 +++ b/st.h
-@@ -120,4 +120,5 @@ extern char *termname;
- extern unsigned int tabspaces;
+@@ -121,4 +121,5 @@ extern char *termname;
  extern unsigned int defaultfg;
  extern unsigned int defaultbg;
+ extern unsigned int defaultcs;
 +extern float alpha;
  extern const int boxdraw, boxdraw_bold, boxdraw_braille;
 diff --git a/x.c b/x.c
