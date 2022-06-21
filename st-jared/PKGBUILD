@@ -19,7 +19,6 @@ provides=(st)
 conflicts=(st)
 url=https://st.suckless.org
 source=(git://git.suckless.org/st
-	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-258color-terminfo.patch
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-scrollback-20201205-4ef0cbd.diff
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-externalpipe-0.8.4.diff
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-boxdraw_v2-0.8.3.diff
@@ -30,7 +29,6 @@ source=(git://git.suckless.org/st
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-pipe-utils-0.8.4.patch
 	https://raw.githubusercontent.com/jaredforrest/PKGBUILDS/st-jared/st-jared/st-mystuff-0.8.4.patch)
 sha256sums=(SKIP
-    SKIP
     SKIP
     SKIP
     SKIP
@@ -51,7 +49,6 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    patch --verbose --forward --strip=1 --input="${srcdir}/st-258color-terminfo.patch"
     patch --verbose --forward --strip=1 --input="${srcdir}/st-scrollback-20201205-4ef0cbd.diff"
     patch --verbose --forward --strip=1 --input="${srcdir}/st-externalpipe-0.8.4.diff"
     patch --verbose --forward --strip=1 --input="${srcdir}/st-boxdraw_v2-0.8.3.diff"
