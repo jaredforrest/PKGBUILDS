@@ -96,7 +96,7 @@ diff -Nbru st/sixel.c st-sixel/sixel.c
 +				(size_t)image->w * sizeof(sixel_color_no_t));
 +			/* fill extended area with background color */
 +			memset(alt_buffer + width * n + image->w,
-+				defaultbg,
++				0,
 +				(size_t)(width - image->w) * sizeof(sixel_color_no_t));
 +		}
 +	} else {
@@ -111,7 +111,7 @@ diff -Nbru st/sixel.c st-sixel/sixel.c
 +	if (height > image->h) {  /* if height is extended */
 +		/* fill extended area with background color */
 +		memset(alt_buffer + width * image->h,
-+			defaultbg,
++			0,
 +			(size_t)(width * (height - image->h)) * sizeof(sixel_color_no_t));
 +	}
 +	/* free source image */
