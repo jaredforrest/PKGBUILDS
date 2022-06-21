@@ -28,16 +28,7 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
  
  /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
  const int boxdraw_braille = 0;
-@@ -95,7 +90,7 @@
- static int bellvolume = 0;
-
- /* default TERM value */
--char *termname = "st-256color";
-+char *termname = "st-258color";
-
- /*
-  * spaces per tab 
-@@ -117,32 +117,33 @@
+@@ -117,32 +117,32 @@
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
  	/* 8 normal colors */
@@ -87,7 +78,6 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
 +	"#fcfcfc", /* default foreground colour */
 -	"black", /* default background colour */
 +	"#1d2021", /* default background colour */
-+	"#1c1c1c",
  };
  
  
@@ -130,49 +120,3 @@ diff -Nbru st/config.def.h st-sixel/config.def.h
  	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
  	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
  	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
-diff -Nbru st/st.c st-sixel/st.c
---- st/st.c	2021-01-09 16:08:50.935688158 +0000
-+++ st-sixel/st.c	2021-01-09 15:43:24.159877312 +0000
-@@ -36,6 +36,7 @@
- #define STR_BUF_SIZ   ESC_BUF_SIZ
- #define STR_ARG_SIZ   ESC_ARG_SIZ
- #define HISTSIZE      2000
-+#define EXTRACOLS     5
- 
- /* macros */
- #define IS_SET(flag)		((term.mode & (flag)) != 0)
-@@ -1446,7 +1447,7 @@
- 			break;
- 		}
- 		*npar += 2;
--		if (!BETWEEN(attr[*npar], 0, 255))
-+		if (!BETWEEN(attr[*npar], 0, 255+EXTRACOLS))
- 			fprintf(stderr, "erresc: bad fgcolor %d\n", attr[*npar]);
- 		else
- 			idx = attr[*npar];
-diff -Nbru st/st.info st-sixel/st.info
---- st/st.info	2021-01-09 16:08:44.002387118 +0000
-+++ st-sixel/st.info	2021-01-09 11:57:17.698614619 +0000
-@@ -204,7 +204,7 @@
- st-256color| simpleterm with 256 colors,
- 	use=st,
- 	ccc,
--	colors#256,
-+	colors#261,
- 	oc=\E]104\007,
- 	pairs#32767,
- #	Nicked from xterm-256color
-diff -Nbru st/x.c st-sixel/x.c
---- st/x.c	2021-01-09 16:08:50.939021476 +0000
-+++ st-sixel/x.c	2021-01-09 15:23:55.307873585 +0000
-@@ -797,6 +797,10 @@
- 	dc.col[defaultbg].color.alpha = (unsigned short)(0xffff * alpha);
- 	dc.col[defaultbg].pixel &= 0x00FFFFFF;
- 	dc.col[defaultbg].pixel |= (unsigned char)(0xff * alpha) << 24;
-+   /* for my custom colors TODO */
-+   dc.col[260].color.alpha = (unsigned short)(0xffff * 0.9);
-+   dc.col[260].pixel &= 0x00FFFFFF;
-+   dc.col[260].pixel |= (unsigned char)(0xff * 0.9) << 24;
- 	loaded = 1;
- }
- 
