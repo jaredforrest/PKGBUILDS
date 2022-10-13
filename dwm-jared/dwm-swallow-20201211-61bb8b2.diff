@@ -41,9 +41,9 @@ index 7084c33..ff9e508 100644
 --- a/config.mk
 +++ b/config.mk
 @@ -19,10 +19,11 @@ FREETYPELIBS = -lfontconfig -lXft
- FREETYPEINC = /usr/include/freetype2
  # OpenBSD (uncomment)
  #FREETYPEINC = ${X11INC}/freetype2
+ #MANPREFIX = ${PREFIX}/man
 +#KVMLIB = -lkvm
  
  # includes and libs
