@@ -63,7 +63,7 @@ diff -Nbru dwm/config.def.h dwm-jared/config.def.h
 +static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
 +static const char *scratchpadcmd[]  = { "tabbed", "-c", "-g", "644x412+958+514", "-n", "spterm", "-r", "2", "st", "-w", "''", NULL };
  
- static Key keys[] = {
+ static const Key keys[] = {
  	/* modifier                     key        function        argument */
  	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
  	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
